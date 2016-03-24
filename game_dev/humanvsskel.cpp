@@ -2,6 +2,7 @@
 #include <vector>
 #include <cstdio>
 #include <iterator>
+#include <cstdio>
 using namespace std;
 
 void start_game();
@@ -48,13 +49,17 @@ void start_game()
   //int deadenemies;
   cout<<"--------------------------Game Begins-------------------------------------"<<endl;
   spawn_skeletons(enemies,1);
+
   while(status)
   {
+  		system("stty raw"); // TO GET KEYBOARD INPUT WITHOUT PRESSING ENTER
   		if(enemies.size()==0)
   		{
+  			system("stty cooked");
   			cout<<"No more Enemies Left! You win !"<<endl;
   			break;
   		}
+  		
   		c=getchar();
   		for(int i=0;i<enemies.size();++i)
   		{
@@ -85,6 +90,7 @@ void start_game()
   		  }
 
   }
+  system("stty cooked");
 }
 
     int human::dam()
